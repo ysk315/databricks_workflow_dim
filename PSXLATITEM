@@ -1,0 +1,26 @@
+CREATE TABLE adw_dev.enr.psxlatitem (
+  FIELDNAME STRING COLLATE UTF8_BINARY,
+  FIELDVALUE STRING COLLATE UTF8_BINARY,
+  EFFDT DATE,
+  EFF_STATUS STRING COLLATE UTF8_BINARY,
+  XLATLONGNAME STRING COLLATE UTF8_BINARY,
+  XLATSHORTNAME STRING COLLATE UTF8_BINARY,
+  LASTUPDTTM TIMESTAMP,
+  LASTUPDOPRID STRING COLLATE UTF8_BINARY,
+  SYNCID INT,
+  ETL_INSERT_DATE DATE,
+  ETL_INSERT_USER STRING COLLATE UTF8_BINARY,
+  ETL_UPDATE_DATE DATE,
+  ETL_UPDATE_USER STRING COLLATE UTF8_BINARY)
+USING delta
+DEFAULT COLLATION UTF8_BINARY
+TBLPROPERTIES (
+  'delta.enableDeletionVectors' = 'true',
+  'delta.feature.appendOnly' = 'supported',
+  'delta.feature.deletionVectors' = 'supported',
+  'delta.feature.invariants' = 'supported',
+  'delta.minReaderVersion' = '3',
+  'delta.minWriterVersion' = '7',
+  'delta.parquet.compression.codec' = 'zstd',
+  'delta.parquet.format.version' = '2.12.0',
+  'delta.parquet.format.version.afe.internal' = '2.12.0')
